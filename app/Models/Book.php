@@ -13,6 +13,8 @@ class Book extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['title', 'pages', 'ISBN', 'year', 'category_id'];
+
     /**
      * Get the category that owns the Book
      *
