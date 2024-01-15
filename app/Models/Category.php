@@ -10,6 +10,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public $timestamps = false;
 
     /**
@@ -21,4 +23,5 @@ class Category extends Model
     {
         return $this->hasMany(Book::class);
     }
+
 }

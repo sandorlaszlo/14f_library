@@ -36,13 +36,19 @@ class BookController extends Controller
      */
     public function show($id)
     {
-
-
         // $book = Book::where('id','=',$id)->get();
         $book = Book::with('category')->find($id);
         if ($book == null)
             return response()->json(['message' => 'No book found.'], 404);
         return response()->json($book);
+    }
+
+    public function showByTitle($title)
+    {
+        $books = Book::where('title', 'like', '%'.$title.'%')->get();
+        if (count($books) == 0)
+            return response()->json(['message' => 'No book found.'], 404);
+        return response()->json($books);
     }
 
     /**

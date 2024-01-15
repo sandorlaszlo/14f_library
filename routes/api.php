@@ -23,5 +23,14 @@ Route::post('books', [BookController::class,'store']);
 Route::put('books/{id}', [BookController::class, 'update']);
 Route::patch('books/{id}', [BookController::class, 'update']);
 
+Route::get('books/search/{title}', [BookController::class, 'showByTitle']);
+
+
 Route::get('categories', [CategoryController::class, 'index']);
 Route::get('categories/{id}', [CategoryController::class, 'show']);
+Route::post('categories', [CategoryController::class,'store']);
+Route::put('categories/{id}', [CategoryController::class, 'update']);
+Route::patch('categories/{id}', [CategoryController::class, 'update']);
+Route::delete('categories/{id}', [CategoryController::class, 'destroy']);
+
+Route::get('categories/{id}/books', [CategoryController::class, 'booksOfcategory']);
