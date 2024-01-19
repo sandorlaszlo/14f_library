@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Book extends Model
 {
@@ -27,6 +28,16 @@ class Book extends Model
     {
         return $this->belongsTo(Category::class);
         // return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    /**
+     * The authors that belong to the Book
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function authors(): BelongsToMany
+    {
+        return $this->belongsToMany(Author::class, 'authors_books', 'book_id', 'author_id');
     }
 
 }
