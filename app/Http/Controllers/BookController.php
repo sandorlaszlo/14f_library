@@ -79,4 +79,12 @@ class BookController extends Controller
         $book->delete();
         return response('', 204);
     }
+
+    public function readersOfBook($id)
+    {
+        $book = Book::find($id);
+        if ($book == null)
+            return response()->json(['message' => 'No book found.'], 404);
+        return response()->json($book->readers);
+    }
 }
